@@ -24,13 +24,6 @@ function init(modules: { typescript: typeof ts_module }) {
       );
       const prior = oldLS.getSemanticDiagnostics(fileName);
 
-      if (prior.length > 0) {
-        info.project.projectService.logger.info(
-          `react-lint-service is returning prior`
-        );
-        return prior;
-      }
-
       try {
         let diagnostics: ts.Diagnostic[] = prior ? [...prior] : [];
         function reportDiagnostic(diag: ts.Diagnostic) {
